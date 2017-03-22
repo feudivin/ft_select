@@ -6,7 +6,7 @@
 /*   By: jfourne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/22 12:44:16 by jfourne           #+#    #+#             */
-/*   Updated: 2017/03/22 12:47:25 by jfourne          ###   ########.fr       */
+/*   Updated: 2017/03/22 14:52:07 by jfourne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int				key_letter(char *buf, t_list **arg, char **search, t_list *tmp)
 		if (*search == NULL)
 			*search = ft_strdup(buf);
 		else
-			*search = ft_strjoin(*search, buf);
+			*search = ft_strjoin_and_clean(*search, buf, 1);
 		while (tmp && ft_strstr(tmp->content, *search) == NULL)
 			tmp = tmp->next;
 		if (tmp != NULL)
