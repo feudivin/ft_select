@@ -6,7 +6,7 @@
 /*   By: jfourne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/15 13:33:16 by jfourne           #+#    #+#             */
-/*   Updated: 2017/03/20 16:40:43 by jfourne          ###   ########.fr       */
+/*   Updated: 2017/03/24 16:40:49 by jfourne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,9 @@
 
 int					key_return(char *buf, t_list **arg)
 {
-	t_list			*tmp;
-	int				first;
-
-	first = 0;
-	tmp = *arg;
+	(void)arg;
 	if (buf[0] == 10 && buf[1] == 0 && buf[2] == 0)
-	{
-		while (tmp)
-		{
-			if (tmp->select == 1)
-			{
-				if (first == 1)
-					ft_putchar(' ');
-				if (first == 0)
-					first = 1;
-				ft_putstr(tmp->content);
-			}
-			tmp = tmp->next;
-		}
-		return (2);
-	}
+		return (3);
 	return (0);
 }
 

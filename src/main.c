@@ -6,7 +6,7 @@
 /*   By: jfourne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/28 16:06:53 by jfourne           #+#    #+#             */
-/*   Updated: 2017/03/22 13:05:48 by jfourne          ###   ########.fr       */
+/*   Updated: 2017/03/24 16:43:22 by jfourne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,30 @@ void				clear_window(void)
 	tputs(clearstr, 1, &my_putc);
 }
 
+void				print_end(t_list *arg)
+{
+	int				first;
+	t_list			*tmp;
+
+	first = 0;
+	tmp = arg;
+	while (tmp)
+	{
+		if (tmp->select == 1)
+		{
+			if (first == 1)
+				ft_putchar(' ');
+			if (first == 0)
+				first = 1;
+			ft_putstr(tmp->content);
+		}
+		tmp = tmp->next;
+	}
+}
+
 int					main(int ac, char **av)
 {
+	int				ret;
 	t_list			*arg;
 
 	if (ac < 2)
@@ -38,8 +60,11 @@ int					main(int ac, char **av)
 		reset_term();
 		return (-1);
 	}
-	ft_select(&arg, 0, 0);
-	ft_lstfree(&arg);
+	ret = 0;
+	ft_select(&arg, 0, &ret);
 	reset_term();
+	if (ret == 3)
+		print_end(arg);
+	ft_lstfree(&arg);
 	return (0);
 }

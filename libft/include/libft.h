@@ -6,7 +6,7 @@
 /*   By: jfourne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/03 15:43:18 by jfourne           #+#    #+#             */
-/*   Updated: 2017/03/10 16:09:33 by jfourne          ###   ########.fr       */
+/*   Updated: 2017/03/22 13:19:28 by jfourne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ typedef struct		s_size
 	int				x;
 	int				y;
 }					t_size;
-
 
 typedef struct		s_list
 {

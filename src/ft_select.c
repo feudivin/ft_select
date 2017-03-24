@@ -6,7 +6,7 @@
 /*   By: jfourne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/15 13:51:20 by jfourne           #+#    #+#             */
-/*   Updated: 2017/03/22 12:56:41 by jfourne          ###   ########.fr       */
+/*   Updated: 2017/03/24 16:42:11 by jfourne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void				other_key(char *buf, t_list **arg, struct winsize w,
 	key_arrow_left(buf, arg, w);
 }
 
-void				ft_select(t_list **arg, int i, int ret)
+void				ft_select(t_list **arg, int i, int *ret)
 {
 	bool			stop;
 	struct winsize	w;
@@ -63,14 +63,14 @@ void				ft_select(t_list **arg, int i, int ret)
 		ft_memset(&buf, 0, MAX_KEY);
 		get_size(&w);
 		print_choice(arg, w, search);
-		if ((ret = read(0, buf, MAX_KEY - 1)) == -1)
+		if ((*ret = read(0, buf, MAX_KEY - 1)) == -1)
 			return ;
-		buf[ret] = '\0';
-		while (g_func_tab[i] != NULL && (ret = g_func_tab[i](buf, arg)) == 0)
+		buf[*ret] = '\0';
+		while (g_func_tab[i] != NULL && (*ret = g_func_tab[i](buf, arg)) == 0)
 			i++;
-		if (ret == 0)
+		if (*ret == 0)
 			other_key(buf, arg, w, &search);
-		if (ret == 2)
+		if (*ret == 2 || *ret == 3)
 			stop = TRUE;
 	}
 	if (search)

@@ -6,7 +6,7 @@
 /*   By: jfourne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/24 16:45:56 by jfourne           #+#    #+#             */
-/*   Updated: 2017/03/22 13:11:26 by jfourne          ###   ########.fr       */
+/*   Updated: 2017/03/24 16:37:55 by jfourne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void			init_window(void);
 void			get_size(struct winsize *w);
 void			reset_term(void);
 void			print_choice(t_list **arg, struct winsize w, char *search);
-void			ft_select(t_list **arg, int i, int ret);
+void			ft_select(t_list **arg, int i, int *ret);
 void			ft_print_key(char *buf, size_t len);
 void			init_signal(void);
 void			sig_resize(int sig);

@@ -6,7 +6,7 @@
 /*   By: jfourne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/15 13:45:32 by jfourne           #+#    #+#             */
-/*   Updated: 2017/03/22 13:07:02 by jfourne          ###   ########.fr       */
+/*   Updated: 2017/03/24 16:42:52 by jfourne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,6 @@ void				reset_term(void)
 		ft_putendl_fd("ft_select: could not get termios", 2);
 		return ;
 	}
-	tputs(clearstr, 1, &my_putc);
 	my_term.c_lflag |= ICANON;
 	my_term.c_lflag |= ECHO;
 	my_term.c_oflag |= OPOST;
@@ -87,4 +86,5 @@ void				reset_term(void)
 	tputs(clearstr, 1, &my_putc);
 	if ((clearstr = tgetstr("te", NULL)) == NULL)
 		return ;
+	tputs(clearstr, 1, &my_putc);
 }
